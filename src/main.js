@@ -31,7 +31,7 @@ const expirationDatePattern = {
     YY: {
       mask: IMask.MaskedRange,
       from: String(new Date().getFullYear()).slice(2),
-      to: String(new Date().getUTCFullYear() + 10).slice(2),
+      to: String(new Date().getFullYear() + 10).slice(2),
     },
     MM: {
       mask: IMask.MaskedRange,
@@ -71,3 +71,19 @@ const cardNumberPattern = {
   },
 }
 const cardNumberMasked = IMask(cardNumber, cardNumberPattern)
+
+const addButton = document.querySelector("#add-card")
+addButton.addEventListener("click", () => {
+  alert("Cartão Adicionado!")
+})
+
+document.querySelector("form").addEventListener("submit", (event) => {
+  event.preventDefault()
+})
+
+const cardHolder = document.querySelector("#card-holder")
+cardHolder.addEventListener("imput", () => {
+  const ccHolder = document.querySelector(".cc-holder .value")
+
+  ccHolder.innerText = cardHolder.value
+})
